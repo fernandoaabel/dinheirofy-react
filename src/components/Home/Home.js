@@ -10,10 +10,12 @@ import LoadingSpinner from '../LoadingSpinner';
 @observer
 class Home extends React.Component {
 	loadHomeData = async () => {
-		this.props.commonStore.setLoadingHome(true);
-		this.props.walletsStore.clear();
-		this.props.walletsStore.loadWalletsForUser(this.props.userStore.currentUser._id);
-		this.props.commonStore.setLoadingHome(false);
+		if (this.props.userStore.currentUser) {
+			this.props.commonStore.setLoadingHome(true);
+			this.props.walletsStore.clear();
+			this.props.walletsStore.loadWalletsForUser(this.props.userStore.currentUser._id);
+			this.props.commonStore.setLoadingHome(false);
+		}
 	};
 
 	componentDidMount() {
@@ -26,6 +28,7 @@ class Home extends React.Component {
 
 	render() {
 		const { appName, isLoadingHome } = this.props.commonStore;
+		const { currentUser } = this.props.userStore;
 
 		if (isLoadingHome) return <LoadingSpinner />;
 
@@ -34,9 +37,11 @@ class Home extends React.Component {
 				<Banner phrase={'Your wallets'} appName={appName} />
 
 				<div className="container page">
-					<div className="col-md-12">
-						<WalletList wallets={this.props.walletsStore.wallets} />
-					</div>
+					{currentUser && (
+						<div className="col-md-12">
+							<WalletList wallets={this.props.walletsStore.wallets} />
+						</div>
+					)}
 				</div>
 			</div>
 		);

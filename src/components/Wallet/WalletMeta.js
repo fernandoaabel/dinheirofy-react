@@ -25,14 +25,13 @@ const WalletMeta = observer((props) => {
 			<div>
 				<Link to={`/@${wallet.user.name}`} className="user">
 					<img src={wallet.user.image_url} className="user-pic" alt="" />
-					{wallet.user.name}
+					<span>{wallet.user.name}</span>
 				</Link>
 			</div>
 			<div className="info">
 				<span className="date">Created at {new Date(wallet.createdAt).toDateString()}</span>
 				<span className="date">Updated at {new Date(wallet.updatedAt).toDateString()}</span>
 			</div>
-			<hr />
 			<div>{showActions && <WalletActions wallet={wallet} />}</div>
 		</div>
 	);

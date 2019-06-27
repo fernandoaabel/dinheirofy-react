@@ -24,7 +24,7 @@ class WalletPreview extends React.Component {
 						<h1>{wallet.title}</h1>
 					</Link>
 					<hr />
-					<WalletMeta wallet={wallet} showActions={canModify} onDelete={handleDeleteWallet} />
+					<WalletMeta wallet={wallet} showActions={!canModify} onDelete={handleDeleteWallet} />
 				</div>
 			</div>
 		);

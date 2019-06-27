@@ -10,10 +10,11 @@ class SettingsForm extends React.Component {
 		super();
 
 		this.state = {
-			image_url: '',
 			name: '',
+			username: '',
 			email: '',
-			password: ''
+			password: '',
+			image_url: ''
 		};
 
 		this.updateState = (field) => (ev) => {
@@ -39,6 +40,7 @@ class SettingsForm extends React.Component {
 			Object.assign(this.state, {
 				image_url: this.props.userStore.currentUser.image_url || '',
 				name: this.props.userStore.currentUser.name,
+				username: this.props.userStore.currentUser.username,
 				email: this.props.userStore.currentUser.email
 			});
 		}
@@ -55,6 +57,16 @@ class SettingsForm extends React.Component {
 							placeholder="Name"
 							value={this.state.name}
 							onChange={this.updateState('name')}
+						/>
+					</fieldset>
+
+					<fieldset className="form-group">
+						<input
+							className="form-control form-control-md"
+							type="text"
+							placeholder="Username (Unique)"
+							value={this.state.username}
+							onChange={this.updateState('username')}
 						/>
 					</fieldset>
 
@@ -78,7 +90,7 @@ class SettingsForm extends React.Component {
 						/>
 					</fieldset>
 
-					<fieldset className="form-group">
+					{/* <fieldset className="form-group">
 						<input
 							className="form-control form-control-md"
 							type="password"
@@ -86,7 +98,7 @@ class SettingsForm extends React.Component {
 							value={this.state.password}
 							onChange={this.updateState('password')}
 						/>
-					</fieldset>
+					</fieldset> */}
 
 					<button
 						className="btn btn-lg btn-primary pull-xs-right"
@@ -108,11 +120,19 @@ class Settings extends React.Component {
 
 	render() {
 		return (
-			<div className="settings-page">
+			<div className="settings-page profile-page">
+				<div className="user-info row">
+					<div className="col-xs-12 col-md-10 offset-md-1">
+						<img src={this.props.userStore.currentUser.image_url} className="user-img" alt="" />
+						<h3>{this.props.userStore.currentUser.name}</h3>
+						<h5>{this.props.userStore.currentUser.username}</h5>
+					</div>
+				</div>
 				<div className="container page">
 					<div className="row">
 						<div className="col-md-6 offset-md-3 col-xs-12">
-							<h2 className="text-xs-center">Your Settings</h2>
+							<h5 className="text-xs-center">Your Settings</h5>
+							<hr />
 
 							<ListErrors errors={this.props.userStore.updatingUserErrors} />
 
@@ -123,7 +143,7 @@ class Settings extends React.Component {
 								}
 							/>
 							<hr />
-							<button className="btn btn-outline-danger" onClick={this.handleClickLogout}>
+							<button className="btn btn-outline-danger " onClick={this.handleClickLogout}>
 								Or click here to logout.
 							</button>
 						</div>

@@ -55,22 +55,12 @@ const requests = {
 			.then(responseBody)
 };
 
-const Users = {
-	login: (email, password) => requests.post('/users/auth', { email, password }),
-	register: (name, email, password) => requests.post('/users/register', { email, name, password }),
-	all: () => requests.get('/users'),
-	find: (userId) => requests.get('/users/' + userId),
-	save: (userId, user) => requests.put('/users/' + userId, { user }),
-	update: (userId, user) => requests.put('/users/' + userId, { user }),
-	delete: (userId) => requests.del('/users/' + userId),
-	exists: (email) => requests.get('/users/exists/' + email)
-};
-
 const Auth = {
-	login: (email, password) => Users.login(email, password),
-	register: (name, email, password) => Users.register({ email, name, password }),
-	save: (userId, user) => Users.update(userId, { user }),
-	exists: (email) => Users.exists(email)
+	login: (email, password) => requests.post('/users/auth', { email, password }),
+	register: (newUser) => requests.post('/users/register', newUser),
+	save: (userId, user) => requests.put('/users/' + userId, { user }),
+	exists: (email) => requests.get(`/users/exists/email/${email}`),
+	existsByUsername: (username) => requests.get(`/users/exists/username/${username}`)
 };
 
 const Wallets = {
@@ -80,18 +70,7 @@ const Wallets = {
 	create: (wallet) => requests.post('/wallets', { wallet }),
 	get: (id) => requests.get(`/wallets/${id}`),
 	del: (id) => requests.del(`/wallets/${id}`)
-	//all: (page, lim = 10) => requests.get(`/wallets?${limit(lim, page)}`),
-	// byAuthor: (author, page, query) => requests.get(`/wallets?author=${encode(author)}&${limit(5, page)}`),
-	// byTag: (tag, page, lim = 10) => requests.get(`/wallets?tag=${encode(tag)}&${limit(lim, page)}`),
-	// favorite: (slug) => requests.post(`/wallets/${slug}/favorite`),
-	// favoritedBy: (author, page) => requests.get(`/wallets?favorited=${encode(author)}&${limit(5, page)}`),
-	// feed: () => requests.get('/wallets/feed?limit=10&offset=0'),
-	// unfavorite: (slug) => requests.del(`/wallets/${slug}/favorite`)
 };
-
-// const Tags = {
-//    getAll: () => requests.get('/tags')
-// };
 
 // const Articles = {
 //    all: (page, lim = 10) => requests.get(`/articles?${limit(lim, page)}`),
@@ -113,17 +92,10 @@ const Wallets = {
 //    forArticle: (slug) => requests.get(`/articles/${slug}/comments`)
 // };
 
-// const Profile = {
-//    follow: (username) => requests.post(`/profiles/${username}/follow`),
-//    get: (username) => requests.get(`/profiles/${username}`),
-//    unfollow: (username) => requests.del(`/profiles/${username}/follow`)
-// };
-
 export default {
 	//Articles,
 	Auth,
 	Wallets
 	//Comments,
-	// Profile
 	//Tags
 };

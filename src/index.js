@@ -17,7 +17,6 @@ import commonStore from './stores/commonStore';
 import editorStore from './stores/editorStore';
 import userStore from './stores/userStore';
 import newWalletStore from './stores/newWalletStore';
-import profileStore from './stores/profileStore';
 import walletsStore from './stores/walletStore';
 import { configure } from 'mobx';
 
@@ -29,7 +28,6 @@ const stores = {
 	editorStore,
 	userStore,
 	newWalletStore,
-	profileStore,
 	walletsStore
 };
 

@@ -10,7 +10,6 @@ class UserStore {
 
 	@action setUserByToken(token) {
 		this.loadingUser = true;
-		console.log('token', token);
 		const decodedToken = jtw_decode(token);
 		this.currentUser = decodedToken.user;
 		console.log('user', decodedToken.user);
@@ -21,8 +20,8 @@ class UserStore {
 		this.updatingUser = true;
 		return agent.Auth.save(userId, newUser)
 			.then(
-				action(({ user }) => {
-					this.currentUser = user;
+				action((user) => {
+					if (user.body) this.currentUser = user.body;
 				})
 			)
 			.finally(

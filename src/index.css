@@ -2555,7 +2555,8 @@ fieldset[disabled] a.btn {
     pointer-events: none
 }
 
-.btn-primary {
+.btn-primary,
+.btn-primary:disabled {
     color: #fff;
     background-color: #5c5cb8;
     border-color: #5c5cb8
@@ -2593,7 +2594,7 @@ fieldset[disabled] a.btn {
 .open>.btn-primary.dropdown-toggle:focus,
 .open>.btn-primary.dropdown-toggle.focus {
     color: #fff;
-    background-color: #398439;
+    background-color: #4545b7;
     border-color: #2d672d
 }
 
@@ -2761,7 +2762,7 @@ fieldset[disabled] a.btn {
 .open>.btn-success.dropdown-toggle:focus,
 .open>.btn-success.dropdown-toggle.focus {
     color: #fff;
-    background-color: #398439;
+    background-color: #4545b7;
     border-color: #2d672d
 }
 
@@ -2929,7 +2930,7 @@ fieldset[disabled] a.btn {
 .open>.btn-outline-primary.dropdown-toggle:focus,
 .open>.btn-outline-primary.dropdown-toggle.focus {
     color: #fff;
-    background-color: #398439;
+    background-color: #4545b7;
     border-color: #2d672d
 }
 
@@ -3091,7 +3092,7 @@ fieldset[disabled] a.btn {
 .open>.btn-outline-success.dropdown-toggle:focus,
 .open>.btn-outline-success.dropdown-toggle.focus {
     color: #fff;
-    background-color: #398439;
+    background-color: #4545b7;
     border-color: #2d672d
 }
 
@@ -6561,14 +6562,6 @@ a.text-primary:hover {
     color: #4545b7
 }
 
-.text-success {
-    color: #5c5cb8!important
-}
-
-a.text-success:focus,
-a.text-success:hover {
-    color: #4545b7
-}
 
 .text-info {
     color: #5bc0de!important
@@ -7324,11 +7317,12 @@ footer .attribution {
     padding: 2rem 0 1rem
 }
 
-.profile-page .user-info .user-img {
-    width: 100px;
-    height: 100px;
+.user-img {
+    width: 150px;
+    height: 150px;
     border-radius: 100px;
-    margin-bottom: 1rem
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0, 0, 0, .1);
 }
 
 .profile-page .user-info h4 {

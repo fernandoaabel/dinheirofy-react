@@ -35,16 +35,16 @@ class App extends React.Component {
 					<Header />
 					<Switch>
 						<Route exact path="/" component={Home} />
-						<Route exact path="/wallet/new" component={NewWallet} />
-						<Route exact path="/wallet/edit/:id" component={NewWallet} />
-						<Route path="/wallet/:id" component={Wallet} />
+						<PrivateRoute exact path="/wallet/new" component={NewWallet} />
+						<PrivateRoute exact path="/wallet/edit/:id" component={NewWallet} />
+						<PrivateRoute path="/wallet/:id" component={Wallet} />
 						<Route path="/login" component={Login} />
 						<Route path="/register" component={Register} />
-						<Route path="/editor/:slug?" component={Editor} />
-						<Route path="/article/:id" component={Article} />
+						<PrivateRoute path="/editor/:slug?" component={Editor} />
+						<PrivateRoute path="/article/:id" component={Article} />
 						<PrivateRoute path="/settings" component={Settings} />
-						<Route path="/@:username" component={Profile} />
-						<Route path="/@:username/favorites" component={Profile} />
+						<PrivateRoute path="/@:username" component={Profile} />
+						<PrivateRoute path="/@:username/favorites" component={Profile} />
 						<Route
 							render={() => (
 								<div>

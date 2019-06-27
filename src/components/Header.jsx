@@ -44,6 +44,9 @@ const LoggedInView = (props) => {
 					</Link>
 
 					<div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<Link to={`/@${props.currentUser.username}`} className="dropdown-item">
+							Profile
+						</Link>
 						<Link to="/settings" className="dropdown-item">
 							Settings
 						</Link>
