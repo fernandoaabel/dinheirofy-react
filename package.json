@@ -1,31 +1,52 @@
 {
-  "name": "dinheirofy-react",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+   "name": "dinheirofy-react",
+   "version": "0.1.0",
+   "private": true,
+   "devDependencies": {
+      "custom-react-scripts": "0.2.0",
+      "gh-pages": "^1.0.0",
+      "@babel/plugin-proposal-class-properties": "^7.4.4",
+      "@babel/plugin-proposal-decorators": "^7.4.4",
+      "@babel/plugin-syntax-decorators": "^7.2.0",
+      "babel-plugin-transform-decorators-legacy": "^1.3.5"
+   },
+   "dependencies": {
+      "axios": "^0.19.0",
+      "bootstrap": "^4.3.1",
+      "jquery": "^3.4.1",
+      "jwt-decode": "^2.2.0",
+      "mobx": "^5.10.1",
+      "mobx-react": "^6.1.1",
+      "popper.js": "^1.15.0",
+      "promise.prototype.finally": "^3.1.0",
+      "react": "^16.8.6",
+      "react-bootstrap": "^1.0.0-beta.9",
+      "react-dom": "^16.8.6",
+      "react-router": "^5.0.1",
+      "react-router-dom": "^5.0.1",
+      "react-scripts": "3.0.1",
+      "superagent": "^5.1.0",
+      "superagent-promise": "^1.1.0"
+   },
+   "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject"
+   },
+   "eslintConfig": {
+      "extends": "react-app"
+   },
+   "browserslist": {
+      "production": [
+         ">0.2%",
+         "not dead",
+         "not op_mini all"
+      ],
+      "development": [
+         "last 1 chrome version",
+         "last 1 firefox version",
+         "last 1 safari version"
+      ]
+   }
 }

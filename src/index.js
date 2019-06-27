@@ -1,12 +1,52 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import ReactDOM from 'react-dom';
+import promiseFinally from 'promise.prototype.finally';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'mobx-react';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import App from './components/App';
+
+import articlesStore from './stores/articlesStore';
+import commentsStore from './stores/commentsStore';
+import authStore from './stores/authStore';
+import commonStore from './stores/commonStore';
+import editorStore from './stores/editorStore';
+import userStore from './stores/userStore';
+import newWalletStore from './stores/newWalletStore';
+import profileStore from './stores/profileStore';
+import walletsStore from './stores/walletStore';
+import { configure } from 'mobx';
+
+const stores = {
+	articlesStore,
+	commentsStore,
+	authStore,
+	commonStore,
+	editorStore,
+	userStore,
+	newWalletStore,
+	profileStore,
+	walletsStore
+};
+
+// For easier debugging
+window._____APP_STATE_____ = stores;
+
+promiseFinally.shim();
+
+configure({
+	enforceActions: 'always'
+});
+
+ReactDOM.render(
+	<Provider {...stores}>
+		<Router>
+			<App />
+		</Router>
+	</Provider>,
+	document.getElementById('root')
+);
